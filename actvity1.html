@@ -3,49 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berman's Translation Analytics: Interactive Review</title>
+    <title>Antoine Berman: Translation Analytics Workbook</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --bg-cream: #F4F1EA;
-            --navy-primary: #0A2540;
-            --gold-accent: #B4975A;
-            --text-dark: #2D3748;
-            --white: #FFFFFF;
-            --correct-green: #2E7D32;
+            /* Light Theme Palette */
+            --bg-main: #F4F7F9; /* Very light cool gray/blue */
+            --bg-card: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --primary-blue: #2B6CB0; /* Academic Blue */
+            --accent-gold: #D69E2E;
+            --border-light: #E2E8F0;
+            --success-green: #38A169;
+            --error-red: #E53E3E;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg-cream);
-            font-family: 'Space Grotesk', sans-serif;
-            color: var(--text-dark);
+            background-color: var(--bg-main);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
             line-height: 1.6;
             min-height: 100vh;
         }
 
-        /* --- LANDING PAGE VIEW --- */
+        h1, h2, h3, .serif {
+            font-family: 'Lora', serif;
+        }
+
+        /* --- LANDING PAGE --- */
         #landing-page {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            background: radial-gradient(circle at top right, rgba(180, 151, 90, 0.15) 0%, transparent 60%), var(--navy-primary);
-            color: var(--bg-cream);
+            background: radial-gradient(circle at top right, rgba(214, 158, 46, 0.1) 0%, transparent 50%), var(--bg-main);
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
             z-index: 100;
             transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
         }
@@ -57,43 +58,41 @@
         }
 
         .landing-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
             max-width: 800px;
             width: 100%;
-            padding: 50px 40px;
-            border-radius: 24px;
+            padding: 60px 50px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(43, 108, 176, 0.08);
         }
 
         .course-tag {
-            background: var(--gold-accent);
-            color: var(--navy-primary);
-            padding: 6px 16px;
+            background: rgba(43, 108, 176, 0.1);
+            color: var(--primary-blue);
+            padding: 8px 18px;
             border-radius: 50px;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             display: inline-block;
             margin-bottom: 25px;
         }
 
         .landing-card h1 {
-            font-family: 'Merriweather', serif;
             font-size: 2.8rem;
-            color: #FFFFFF;
-            margin-bottom: 10px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
             line-height: 1.2;
         }
 
         .landing-card h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--gold-accent);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-muted);
             margin-bottom: 40px;
         }
 
@@ -103,100 +102,90 @@
             gap: 25px;
             margin-bottom: 45px;
             text-align: left;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 2px dashed var(--border-light);
             padding-top: 30px;
         }
 
         .meta-item h4 {
-            color: var(--gold-accent);
+            color: var(--accent-gold);
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
         }
 
-        .meta-item p {
+        .meta-item p, .meta-item li {
             font-size: 1.1rem;
-            color: #E2E8F0;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
-        .presenters-list {
-            list-style: none;
-        }
-
-        .presenters-list li {
-            margin-bottom: 4px;
-            font-size: 1.05rem;
-        }
+        .presenters-list { list-style: none; }
+        .presenters-list li { margin-bottom: 6px; }
 
         .start-btn {
-            background: var(--gold-accent);
-            color: var(--navy-primary);
+            background: var(--primary-blue);
+            color: white;
             border: none;
             padding: 16px 45px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
             border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(180, 151, 90, 0.3);
+            box-shadow: 0 10px 20px rgba(43, 108, 176, 0.2);
             transition: all 0.3s ease;
         }
 
         .start-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(180, 151, 90, 0.4);
-            background: #FFFFFF;
+            background: #235A94;
+            box-shadow: 0 15px 25px rgba(43, 108, 176, 0.3);
         }
 
         /* --- MAIN ACTIVITY WORKSPACE --- */
         #workspace {
-            padding: 40px 20px;
+            padding: 60px 20px;
             opacity: 0;
-            transition: opacity 0.5s ease 0.4s;
+            display: none;
+            transition: opacity 0.5s ease;
         }
 
         #workspace.visible {
             opacity: 1;
+            display: block;
         }
 
-        header {
+        header.app-header {
             text-align: center;
             max-width: 900px;
             margin: 0 auto 50px auto;
         }
 
-        header h1 {
-            font-family: 'Merriweather', serif;
-            color: var(--navy-primary);
-            font-size: 2.3rem;
-            margin-bottom: 15px;
-            border-bottom: 4px solid var(--gold-accent);
-            padding-bottom: 15px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: #5A6A85;
+        header.app-header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-card {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: 16px;
             padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.05);
-            border-top: 5px solid var(--navy-primary);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-light);
+            border-top: 5px solid var(--primary-blue);
         }
 
         .section-card h2 {
-            font-family: 'Merriweather', serif;
-            color: var(--navy-primary);
+            color: var(--primary-blue);
             margin-bottom: 25px;
             font-size: 1.8rem;
             display: flex;
@@ -204,182 +193,128 @@
             gap: 15px;
         }
 
-        .section-card h2 i {
-            color: var(--gold-accent);
-        }
+        .section-card h2 i { color: var(--accent-gold); }
 
-        /* --- FLASHCARDS CSS --- */
-        .flashcard-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .flashcard {
-            width: 100%;
-            max-width: 550px;
-            height: 300px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .flashcard-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .flashcard.flipped .flashcard-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
-
-        .card-front {
-            background-color: var(--navy-primary);
-            color: var(--bg-cream);
-        }
-
-        .card-front h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.6rem;
-            color: var(--gold-accent);
-            margin-bottom: 10px;
-        }
-
-        .card-back {
-            background-color: var(--gold-accent);
-            color: var(--navy-primary);
-            transform: rotateY(180deg);
-        }
-
-        .card-back p {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .flash-controls {
-            display: flex;
+        /* --- ACTIVITY 1: THE 12 TENDENCIES EXPLORER --- */
+        .tendency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
 
-        .btn {
-            background: var(--navy-primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn:hover {
-            background: var(--gold-accent);
-            color: var(--navy-primary);
-        }
-
-        /* --- MATCHING GAME CSS --- */
-        .match-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .match-column {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .match-item {
-            background: #F8FAFC;
-            border: 2px solid #E2E8F0;
+        .tendency-btn {
+            background: var(--bg-main);
+            border: 1px solid var(--border-light);
             padding: 15px;
             border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
             cursor: pointer;
+            text-align: left;
             transition: all 0.2s;
-            user-select: none;
-            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .match-item:hover {
-            border-color: var(--navy-primary);
-            background: #EDF2F7;
+        .tendency-btn:hover, .tendency-btn.active {
+            background: rgba(43, 108, 176, 0.05);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
         }
 
-        .match-item.selected {
-            background: rgba(180, 151, 90, 0.2);
-            border-color: var(--gold-accent);
-        }
-
-        .match-item.matched {
-            background: rgba(46, 125, 50, 0.15);
-            border-color: var(--correct-green);
-            color: var(--correct-green);
-            cursor: not-allowed;
-        }
-
-        /* --- SANDBOX DIAGNOSIS CSS --- */
-        .scenario-box {
-            background: #F8FAFC;
-            border-left: 5px solid var(--gold-accent);
-            padding: 20px;
+        .tendency-display {
+            margin-top: 25px;
+            background: rgba(214, 158, 46, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 25px;
             border-radius: 0 8px 8px 0;
+            font-size: 1.1rem;
+            min-height: 100px;
+        }
+
+        /* --- ACTIVITY 2: THE PHILOSOPHY SORTER --- */
+        .sorter-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .sort-column {
+            background: var(--bg-main);
+            border: 2px dashed var(--border-light);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 300px;
+        }
+        
+        .sort-column h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .draggable-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: grab;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .draggable-item:active { cursor: grabbing; }
+
+        .bank { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+
+        /* --- ACTIVITY 3: SCENARIO DIAGNOSIS --- */
+        .scenario-nav {
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
         }
+        
+        .nav-dot {
+            height: 12px; width: 12px; border-radius: 50%;
+            background: var(--border-light); cursor: pointer;
+        }
+        .nav-dot.active { background: var(--primary-blue); }
 
-        .scenario-box pre {
-            white-space: pre-wrap;
-            font-family: 'Merriweather', serif;
-            margin: 10px 0;
-            background: #EDF2F7;
-            padding: 10px;
+        .scenario-box {
+            background: var(--bg-main);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .text-block {
+            background: var(--bg-card);
+            padding: 15px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 10px 0 20px 0;
             border-radius: 4px;
+            font-family: 'Lora', serif;
+            font-style: italic;
         }
 
         select {
             width: 100%;
             padding: 12px;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             border-radius: 8px;
-            border: 2px solid #E2E8F0;
+            border: 1px solid var(--border-light);
             margin-bottom: 15px;
-            outline: none;
+            background: var(--bg-card);
         }
 
-        select:focus {
-            border-color: var(--navy-primary);
-        }
+        .feedback { font-weight: 600; margin-top: 10px; min-height: 24px; padding: 10px; border-radius: 6px; }
+        .feedback.success { background: rgba(56, 161, 105, 0.1); color: var(--success-green); }
+        .feedback.error { background: rgba(229, 62, 62, 0.1); color: var(--error-red); }
 
-        .feedback {
-            font-weight: bold;
-            margin-top: 10px;
-            min-height: 24px;
-        }
-
-        .text-success { color: var(--correct-green); }
-        .text-danger { color: #C62828; }
     </style>
 </head>
 <body>
@@ -406,71 +341,85 @@
         </div>
 
         <button class="start-btn" onclick="startSeminar()">
-            Start Interactive Workbook <i class="fa-solid fa-circle-play" style="margin-left:8px;"></i>
+            Start Interactive Workbook <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
         </button>
     </div>
 </div>
 
 <div id="workspace">
-    <header>
-        <h1>Berman's Negative Analytic Studio</h1>
-        <p>An interactive review tool focusing on the literal analytic elements discussed in our presentation.</p>
+    <header class="app-header">
+        <h1>Berman's Negative Analytic</h1>
+        <p>Master the 12 Deforming Tendencies, Heteroglossia, and the Ethics of Translation.</p>
     </header>
 
     <div class="container">
 
         <div class="section-card">
-            <h2><i class="fa-solid fa-layer-group"></i> Core Concept Flashcards</h2>
-            <p style="margin-bottom: 20px; color: #64748B;">Click the card to flip it and reveal the technical explanation.</p>
+            <h2><i class="fa-solid fa-scale-balanced"></i> 1. The Two Figures of Translation</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Berman outlines two opposing ways to translate. Drag the concepts from the bank into the correct paradigm.</p>
             
-            <div class="flashcard-container">
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="card-front">
-                            <h3 id="card-title">Qualitative Impoverishment</h3>
-                            <p><small style="color: var(--gold-accent)">Click to Flip</small></p>
-                        </div>
-                        <div class="card-back">
-                            <p id="card-definition">Replacing rich, iconic, or textured words with flat, generic terms that lose their sensory and acoustic density.</p>
-                        </div>
+            <div class="bank" id="concept-bank" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag1">Separation of Spirit and Letter</div>
+                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag2">Welcoming the Foreign as Foreign</div>
+                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag3">Focus on "Clear and Elegant" prose</div>
+                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag4">Labor upon the Letter (Signifiers)</div>
+                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag5">Destroys the underlying networks</div>
+            </div>
+
+            <div class="sorter-container">
+                <div class="sort-column" id="platonic-col" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h3>The Platonic / Ethnocentric Figure</h3>
                     </div>
-                </div>
-                <div class="flash-controls">
-                    <button class="btn" onclick="prevCard()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
-                    <button class="btn" onclick="nextCard()">Next <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
+                <div class="sort-column" id="ethical-col" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h3>The Ethical / Literal Figure (The Trial)</h3>
+                    </div>
             </div>
         </div>
 
         <div class="section-card">
-            <h2><i class="fa-solid fa-puzzle-piece"></i> The Deformation Matcher</h2>
-            <p style="margin-bottom: 20px; color: #64748B;">Select a concept from the left column, then choose its matching definition on the right.</p>
+            <h2><i class="fa-solid fa-book-open-reader"></i> 2. The 12 Deforming Tendencies Map</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Click on a tendency from Berman's Negative Analytic to reveal how it subconsciouslly ruins the "Work."</p>
             
-            <div class="match-grid">
-                <div class="match-column" id="terms-col"></div>
-                <div class="match-column" id="defs-col"></div>
+            <div class="tendency-grid">
+                <button class="tendency-btn" onclick="showTendency('rat')">Rationalization <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('clar')">Clarification <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('exp')">Expansion <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('enn')">Ennoblement <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('qual')">Qualitative Impoverishment <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('quan')">Quantitative Impoverishment <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('rhy')">Destruction of Rhythms <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('net')">Destruction of Underlying Networks <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('lin')">Destruction of Linguistic Patternings <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('ver')">Destruction of Vernacular Networks <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('exp2')">Destruction of Expressions/Idioms <i class="fa-solid fa-chevron-right"></i></button>
+                <button class="tendency-btn" onclick="showTendency('het')">Effacement of Superimposition <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <div class="tendency-display" id="tendency-desc">
+                <em>Select a tendency from the grid above to view Berman's definition.</em>
             </div>
         </div>
 
         <div class="section-card">
-            <h2><i class="fa-solid fa-user-secret"></i> Translation Case Studies</h2>
-            <p style="margin-bottom: 20px; color: #64748B;">Analyze the translation shift below and diagnose the exact structural deformation.</p>
+            <h2><i class="fa-solid fa-magnifying-glass"></i> 3. The Deformation Detective</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Analyze the translation shifts below. Which tendency is actively deforming the text?</p>
             
+            <div class="scenario-nav" id="scenario-dots">
+                </div>
+
             <div class="scenario-box">
-                <strong>Original Prose Web (across multiple chapters):</strong>
-                <pre>"The clocks clicked, the waves crashed, the gears caught... he felt stuck in the machinery of time." (Hidden thematic focus on mechanical/nautical motifs scattered across pages)</pre>
-                <strong>Translation Output:</strong>
-                <pre>"The devices made noises, the sea water moved, the parts worked... he felt constrained by life."</pre>
+                <div id="scenario-content">
+                    </div>
                 
-                <label for="scenario1-select"><strong>Your Diagnosis:</strong></label>
-                <select id="scenario1-select" onchange="checkScenario()">
-                    <option value="">-- Choose Deforming Tendency --</option>
-                    <option value="qualitative">Qualitative Impoverishment</option>
-                    <option value="quantitative">Quantitative Impoverishment</option>
-                    <option value="rhythm">Destruction of Rhythms</option>
-                    <option value="network">Destruction of Underlying Networks</option>
+                <label for="scenario-select" style="font-weight: 600;">Diagnose the Deformation:</label>
+                <select id="scenario-select" onchange="checkScenario()">
+                    <option value="">-- Select Tendency --</option>
+                    <option value="Expansion">Expansion</option>
+                    <option value="Ennoblement">Ennoblement</option>
+                    <option value="Effacement of Superimposition">Effacement of Superimposition (Heteroglossia)</option>
+                    <option value="Clarification">Clarification</option>
                 </select>
-                <div id="scenario-feedback" class="feedback"></div>
+                <div id="scenario-feedback" class="feedback" style="display:none;"></div>
             </div>
         </div>
 
@@ -478,135 +427,127 @@
 </div>
 
 <script>
-    // --- ANIMATION CONTROLLER ---
+    // --- APP NAVIGATION ---
     function startSeminar() {
         document.getElementById('landing-page').classList.add('hidden');
-        document.getElementById('workspace').classList.add('visible');
-    }
-
-    // --- FLASHCARD LOGIC ---
-    const flashcardsData = [
-        {title: "Qualitative Impoverishment", def: "Replacing vibrant, sound-heavy, or sensory words with flat, generic equivalents (e.g., changing a specific dark omen word into just 'darkness')."},
-        {title: "Quantitative Impoverishment", def: "A lexical reduction. Collapsing an author's diverse vocabulary into fewer synonyms (e.g., rendering 'rostro', 'semblante', and 'cara' all as 'face')."},
-        {title: "Destruction of Rhythms", def: "Altering punctuation, sentence lengths, or cadences to fit target norms, ruining the original prose musicality and syntax dynamics."},
-        {title: "Underlying Networks", def: "Erasing hidden sub-textual webs of signifiers or recurring motifs that bind distant pages and chapters together subconsciously."}
-    ];
-
-    let currentCardIndex = 0;
-
-    function flipCard(card) {
-        card.classList.toggle('flipped');
-    }
-
-    function updateCard() {
-        const card = document.querySelector('.flashcard');
-        card.classList.remove('flipped');
         setTimeout(() => {
-            document.getElementById('card-title').innerText = flashcardsData[currentCardIndex].title;
-            document.getElementById('card-definition').innerText = flashcardsData[currentCardIndex].def;
-        }, 150);
+            document.getElementById('landing-page').style.display = 'none';
+            const ws = document.getElementById('workspace');
+            ws.style.display = 'block';
+            setTimeout(() => ws.classList.add('visible'), 50);
+        }, 600);
     }
 
-    function nextCard() {
-        currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
-        updateCard();
+    // --- DRAG AND DROP (Philosophy Sorter) ---
+    function allowDrop(ev) { ev.preventDefault(); }
+    function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var target = ev.target;
+        // Ensure we drop into the column, not into another text item
+        if(target.classList.contains('sort-column') || target.id === 'concept-bank') {
+            target.appendChild(document.getElementById(data));
+        } else if (target.parentNode.classList.contains('sort-column')) {
+            target.parentNode.appendChild(document.getElementById(data));
+        }
     }
 
-    function prevCard() {
-        currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
-        updateCard();
+    // --- TENDENCIES DICTIONARY ---
+    const tendenciesData = {
+        'rat': "<strong>Rationalization:</strong> Rearranging syntax and punctuation according to standard, logical discursive order. It turns concrete prose into abstract prose.",
+        'clar': "<strong>Clarification:</strong> Moving from polysemy to monosemy. Imposing definiteness where the original text was intentionally ambiguous or indefinite.",
+        'exp': "<strong>Expansion:</strong> Adding words (inflation) to 'muffle' the work's voice. Berman calls this horizontalizing what is deep and vertical in the original.",
+        'enn': "<strong>Ennoblement:</strong> Rhetorization and elegant rewriting. Erasing the original's gritty orality or intentional 'bad writing' to make it sound classically poetic.",
+        'qual': "<strong>Qualitative Impoverishment:</strong> Replacing sonorous, sensory, or iconic terms with generic figures that lack physical and acoustic density.",
+        'quan': "<strong>Quantitative Impoverishment:</strong> Lexical loss. Using fewer signifiers (synonyms) than the original text differentiates.",
+        'rhy': "<strong>Destruction of Rhythms:</strong> Arbitrary changes to punctuation that ruin the musical, polylogic flow of the prose.",
+        'net': "<strong>Destruction of Underlying Networks:</strong> Erasing the hidden chains of signifiers and subconscious word-obsessions that an author spreads across a novel.",
+        'lin': "<strong>Destruction of Linguistic Patternings:</strong> Standardizing the unique sentence constructions of the author, turning their unique voice into an incoherent patchwork.",
+        'ver': "<strong>Destruction of Vernacular Networks:</strong> Erasing local language, slang, or dialects, or worse, exoticizing them with italics rather than respecting their 'soil'.",
+        'exp2': "<strong>Destruction of Expressions/Idioms:</strong> Replacing an authentic foreign proverb with an existing target-language equivalent, completely erasing the foreign imagery.",
+        'het': "<strong>Effacement of the Superimposition of Languages:</strong> The Babelian problem. Erasing the tension between a local dialect and the dominant koine (standard language) when multiple voices exist in a novel."
+    };
+
+    function showTendency(key) {
+        document.querySelectorAll('.tendency-btn').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        document.getElementById('tendency-desc').innerHTML = tendenciesData[key];
     }
 
-    // --- MATCHING GAME LOGIC ---
-    const matchData = [
-        { id: 1, term: "The Trial of the Foreign", def: "The experience of opening up the target language to the presence of the foreign work." },
-        { id: 2, term: "Platonic Translation", def: "A method that separates Spirit from Letter, prioritizing abstract meaning over the physical words." },
-        { id: 3, term: "The Negative Analytic", def: "An interrogation of the systematic subconscious deforming forces acting within translation." },
-        { id: 4, term: "Rationalization", def: "Rearranging punctuation and sentence architecture into logical, standard structural prose." }
+    // --- SCENARIO DETECTIVE LOGIC ---
+    const scenarios = [
+        {
+            original: "He walked. Street empty. Cold.",
+            translation: "He walked down the avenue. The street was completely empty, and the air was terribly cold.",
+            answer: "Expansion",
+            feedback: "Correct! The translator unrolled and inflated the tight, compressed prose, making it longer and 'horizontal'."
+        },
+        {
+            original: "A peasant character speaks in rough, ungrammatical, rural slang to a wealthy Duke speaking high-class standard language.",
+            translation: "Both the peasant and the Duke speak in perfectly standard, grammatically correct English.",
+            answer: "Effacement of Superimposition",
+            feedback: "Correct! The translation erased the heteroglossia (the coexistence of different socio-linguistic voices or dialects)."
+        },
+        {
+            original: "She looked at the thing with a grimace. 'Ain't no way I'm eating that trash.'",
+            translation: "She gazed upon the item with disdain. 'Under no circumstances shall I consume such refuse.'",
+            answer: "Ennoblement",
+            feedback: "Correct! The translator 'ennobled' the text by making raw, oral speech sound ridiculously elegant and classical."
+        }
     ];
 
-    let selectedTerm = null;
-    let selectedDef = null;
+    let currentScenario = 0;
 
-    function initMatchingGame() {
-        const termsCol = document.getElementById('terms-col');
-        const defsCol = document.getElementById('defs-col');
+    function renderScenario() {
+        // Dots
+        const dotsHTML = scenarios.map((_, i) => 
+            `<div class="nav-dot ${i === currentScenario ? 'active' : ''}" onclick="loadScenario(${i})"></div>`
+        ).join('');
+        document.getElementById('scenario-dots').innerHTML = dotsHTML;
 
-        const shuffledTerms = [...matchData].sort(() => Math.random() - 0.5);
-        const shuffledDefs = [...matchData].sort(() => Math.random() - 0.5);
-
-        shuffledTerms.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'match-item';
-            div.innerText = item.term;
-            div.dataset.id = item.id;
-            div.onclick = () => selectItem(div, 'term');
-            termsCol.appendChild(div);
-        });
-
-        shuffledDefs.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'match-item';
-            div.innerText = item.def;
-            div.dataset.id = item.id;
-            div.onclick = () => selectItem(div, 'def');
-            defsCol.appendChild(div);
-        });
-    }
-
-    function selectItem(el, type) {
-        if (el.classList.contains('matched')) return;
-
-        if (type === 'term') {
-            document.querySelectorAll('#terms-col .match-item').forEach(c => c.classList.remove('selected'));
-            selectedTerm = el;
-        } else {
-            document.querySelectorAll('#defs-col .match-item').forEach(c => c.classList.remove('selected'));
-            selectedDef = el;
-        }
-        el.classList.add('selected');
-
-        checkMatch();
-    }
-
-    function checkMatch() {
-        if (selectedTerm && selectedDef) {
-            if (selectedTerm.dataset.id === selectedDef.dataset.id) {
-                selectedTerm.classList.remove('selected');
-                selectedDef.classList.remove('selected');
-                selectedTerm.classList.add('matched');
-                selectedDef.classList.add('matched');
-                selectedTerm = null;
-                selectedDef = null;
-            } else {
-                setTimeout(() => {
-                    selectedTerm.classList.remove('selected');
-                    selectedDef.classList.remove('selected');
-                    selectedTerm = null;
-                    selectedDef = null;
-                }, 500);
-            }
-        }
-    }
-
-    // --- CASE STUDY LOGIC ---
-    function checkScenario() {
-        const val = document.getElementById('scenario1-select').value;
-        const feedback = document.getElementById('scenario-feedback');
+        // Content
+        const s = scenarios[currentScenario];
+        document.getElementById('scenario-content').innerHTML = `
+            <strong>Original Element:</strong>
+            <div class="text-block">${s.original}</div>
+            <strong>Translation Result:</strong>
+            <div class="text-block">${s.translation}</div>
+        `;
         
-        if (val === 'network') {
-            feedback.className = "feedback text-success";
-            feedback.innerHTML = "<i class='fa-solid fa-circle-check'></i> Correct! By splitting thematic anchor points (clocks, machinery, waves) into disconnected terms across the text, the underlying structural network is lost.";
-        } else if (val === "") {
-            feedback.innerHTML = "";
+        // Reset Dropdown & Feedback
+        document.getElementById('scenario-select').value = "";
+        document.getElementById('scenario-feedback').style.display = "none";
+    }
+
+    function loadScenario(index) {
+        currentScenario = index;
+        renderScenario();
+    }
+
+    function checkScenario() {
+        const val = document.getElementById('scenario-select').value;
+        const feedbackDiv = document.getElementById('scenario-feedback');
+        const s = scenarios[currentScenario];
+
+        if (!val) {
+            feedbackDiv.style.display = "none";
+            return;
+        }
+
+        feedbackDiv.style.display = "block";
+        if (val === s.answer) {
+            feedbackDiv.className = "feedback success";
+            feedbackDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${s.feedback}`;
         } else {
-            feedback.className = "feedback text-danger";
-            feedback.innerHTML = "<i class='fa-solid fa-circle-xmark'></i> Try again! Notice how the systemic threads tracking mechanical elements over multiple chapters were flattened out.";
+            feedbackDiv.className = "feedback error";
+            feedbackDiv.innerHTML = `<i class="fa-solid fa-times-circle"></i> Incorrect. Review Berman's definitions above.`;
         }
     }
 
+    // Initialize
     window.onload = () => {
-        initMatchingGame();
+        renderScenario();
     };
 </script>
 </body>
